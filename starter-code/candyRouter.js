@@ -35,27 +35,54 @@ router.get('/:id', function(req,res) {
 });
 
 //create
-router.post('/:id/edit', function(req,res) {
-	// What would go here? 
-	// res.send("hello earth");
-	// Hint: we want all candies in JSON format
-	res.json(candies.id);
+router.post('/', function(req,res) {
+
+	candies.push(req.body);
+	console.log(req.body);
+	// var newCandy = {
+	// 	"id": "id",
+	// 	"name": "name",
+	// 	"color": "color"
+	// };
+	res.end();
 });
 
 //update
 router.put('/:id', function(req,res) {
-	// What would go here? 
-	// res.send("hello earth");
-	// Hint: we want all candies in JSON format
-	res.json(candies.id);
+	
+	// var idChange = req.params.id;
+
+	// var change = req.body;
+	
+	// res.json(candies[idChange-1]);
+	candies.forEach(function(el, index) {
+    	if (el.id == req.params.id) {
+    	 	candies[index] = req.body;
+
+    	}
+    	
+	});
+	// candies.pop(candies[idChange-1]);
+	console.log(req.body);
+
+	// candies.push(change);
+
+	res.end();
 });
 
 //delete
 router.delete('/:id', function(req,res) {
-	// What would go here? 
-	// res.send("hello earth");
-	// Hint: we want all candies in JSON format
-	res.json(candies.id);
+	
+	candies.forEach(function(el, index) {
+    	if (el.id == req.params.id) {
+    	 	candies.splice(index);
+    	 	console.log(el);
+    	 	console.log(index);
+    	}
+    	
+	});
+	res.end();
+	
 });
 // Fill out the rest of the routes here
 
