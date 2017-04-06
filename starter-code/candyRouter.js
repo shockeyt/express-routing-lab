@@ -73,14 +73,16 @@ router.put('/:id', function(req,res) {
 //delete
 router.delete('/:id', function(req,res) {
 	
-	candies.forEach(function(el, index) {
-    	if (el.id == req.params.id) {
-    	 	candies.splice(index);
-    	 	console.log(el);
-    	 	console.log(index);
-    	}
+	delete candies[req.params.id-1];
+
+	// candies.forEach(function(el, index) {
+ //    	if (el.id == req.params.id) {
+ //    	 	candies.splice(index);
+ //    	 	console.log(el);
+ //    	 	console.log(index);
+ //    	}
     	
-	});
+	// });
 	res.end();
 	
 });
